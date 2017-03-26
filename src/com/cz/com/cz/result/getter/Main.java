@@ -16,19 +16,19 @@ import java.util.Map;
 public class Main {
     public static void main(String args[]) throws IOException, WriteException {
 
-        String appid = "app-20170303221602-0006";
+        String appid = "app-20170323213538-0139";
 
         JxlUtil ju1 = new JxlUtil();
-       ju1.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/Job.xls");
+       ju1.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/zongxiang/Job.xls");
 
         JxlUtil ju2 = new JxlUtil();
-        ju2.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/Stage.xls");
+        ju2.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/zongxiang/Stage.xls");
 
         JxlUtil ju3 = new JxlUtil();
-        ju3.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/Task.xls");
+        ju3.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/zongxiang/Task.xls");
 
         JxlUtil ju4 = new JxlUtil();
-        ju4.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/JobNotStage.xls");
+        ju4.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/zongxiang/JobNotStage.xls");
 
 
         ReadJobJSON read1 = new ReadJobJSON();
