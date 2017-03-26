@@ -1,4 +1,4 @@
-package com.cz.result.com.cz.result.getter;
+package com.cz.com.cz.result.getter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,15 +16,19 @@ import java.util.Map;
 public class Main {
     public static void main(String args[]) throws IOException, WriteException {
 
+        String appid = "app-20170303221602-0006";
+
         JxlUtil ju1 = new JxlUtil();
-        String appid = "app-20170228225018-0659";
-        ju1.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hengxiang/job.xls");
+       ju1.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/Job.xls");
 
         JxlUtil ju2 = new JxlUtil();
-        ju2.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hengxiang/Stage.xls");
+        ju2.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/Stage.xls");
 
         JxlUtil ju3 = new JxlUtil();
-        ju3.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hengxiang/Task.xls");
+        ju3.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/Task.xls");
+
+        JxlUtil ju4 = new JxlUtil();
+        ju4.setPath("/home/cz/Hadoop2/spark-all/resultAna/data/susy/hunhe/JobNotStage.xls");
 
 
         ReadJobJSON read1 = new ReadJobJSON();
@@ -133,6 +137,35 @@ public class Main {
 
         listListMap3.put("Job History", listList3);
         ju3.write(listListMap3);
+
+        ReadSingleJobJSON read4 = new ReadSingleJobJSON();
+        read4.setJobUrl(appid);
+        read4.jobwsu();
+        List<Jobs> job1 = read4.getJobsList();
+
+        Map<String, List<List<String>>> listListMap4 = new HashMap<String, List<List<String>>>();
+        List<List<String>> listList4 = new ArrayList<List<String>>();
+        List<String> list4 = new ArrayList<String>();
+        list4.add("JobID");
+        list4.add("JobDescription");
+        //list1.add("StageID");
+        list4.add("SubmitTime");
+        list4.add("CompleteTime");
+        list4.add("JobDuration/s");
+        listList4.add(list4);
+
+        for (int i = 0; i < job1.size(); i++) {
+            List<String> list44 = new ArrayList<String>();
+            list44.add(job1.get(i).getJobID());
+            list44.add(job1.get(i).getName());
+            list44.add(job1.get(i).getSubmitTime());
+            list44.add(job1.get(i).getCompleteTime());
+            list44.add(job1.get(i).getDuration());
+            listList4.add(list44);
+        }
+
+        listListMap4.put("Job History", listList4);
+        ju4.write(listListMap4);
 
     }
 }

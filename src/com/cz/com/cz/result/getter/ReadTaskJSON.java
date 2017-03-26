@@ -1,4 +1,4 @@
-package com.cz.result.com.cz.result.getter;
+package com.cz.com.cz.result.getter;
 
 import com.google.gson.*;
 
@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Lijie on 2017/2/13.
- * Modified by YE on 2017/3/20.
+ * Created by YE Xingtong on 2017/2/13.
+ * Modified by YE Xingtong on 2017/3/20.
  */
 public class ReadTaskJSON {
 
@@ -21,7 +21,6 @@ public class ReadTaskJSON {
     private String stageId;
     private String taskUrl;
     private String stageStatus;
-    //  private Tasks task;
 
 
     public String getTaskUrl() {
@@ -46,15 +45,12 @@ public class ReadTaskJSON {
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
-        //  connection.setConnectTimeout(8000);
-        //  connection.setReadTimeout(8000);
         String line = null;
 
         StringBuilder response = new StringBuilder();
         try {
             InputStream in = connection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-            // StringBuilder response = new StringBuilder();
             while ((line = reader.readLine()) != null) {
 
                 response.append(line).append("\r\n");
@@ -73,7 +69,6 @@ public class ReadTaskJSON {
         }
 
         String s = response.toString();
-        //   System.out.println(s);
 
         try {
             JsonParser parser = new JsonParser();  //创建JSON解析器
@@ -87,7 +82,6 @@ public class ReadTaskJSON {
 
 
                 JsonObject subObject = array.get(i).getAsJsonObject();
-                // JsonArray subArray = subObject.get("stageIds").getAsJsonArray();
                 JsonObject subsubObject = subObject.get("taskMetrics").getAsJsonObject();
 
                 Tasks task = new Tasks();

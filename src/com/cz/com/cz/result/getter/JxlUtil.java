@@ -1,4 +1,4 @@
-package com.cz.result.com.cz.result.getter;
+package com.cz.com.cz.result.getter;
 
 import java.util.List;
 import java.util.Map;

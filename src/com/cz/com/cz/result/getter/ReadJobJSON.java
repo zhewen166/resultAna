@@ -1,4 +1,4 @@
-package com.cz.result.com.cz.result.getter;
+package com.cz.com.cz.result.getter;
 
 import com.google.gson.*;
 import java.io.*;
@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Lijie on 2017/2/13.
- * Modified by YE on 2017/3/20.
+ * Created by YE Xingtong on 2017/2/17.
+ * Modified by YE Xingtong on 2017/3/21.
+ 
  */
+
 public class ReadJobJSON {
 
     private List<Jobs> jobsList = new ArrayList<Jobs>();
@@ -90,12 +92,10 @@ public class ReadJobJSON {
                     double cm;
                     double cs;
                     double cd;
-
                     sh= Integer.parseInt(job.getSubmitTime().substring(11,13));
                     sm = Integer.parseInt(job.getSubmitTime().substring(14,16));
                     ss = Integer.parseInt(job.getSubmitTime().substring(17,19));
                     sd= Integer.parseInt(job.getSubmitTime().substring(20,23));
-
                     ch= Integer.parseInt(job.getCompleteTime().substring(11,13));
                     cm = Integer.parseInt(job.getCompleteTime().substring(14,16));
                     cs = Integer.parseInt(job.getCompleteTime().substring(17,19));
